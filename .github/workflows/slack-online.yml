@@ -1,6 +1,7 @@
 name: Keep Slack Active
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '*/15 1-20 * * 1-5'  # Every 15 mins from 01:00 to 09:45 UTC (Mon–Fri)
 
