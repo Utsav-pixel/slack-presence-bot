@@ -1,0 +1,17 @@
+name: Keep Slack Active
+
+on:
+  schedule:
+    - cron: '*/15 1-9 * * 1-5'  # Every 15 mins from 01:00 to 09:45 UTC (Mon–Fri)
+
+jobs:
+  stay-online:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Slack presence to auto
+        run: |
+          curl -X POST https://slack.com/api/users.setPresence \
+          -H "Authorization: Bearer ${{ secrets.SLACK_TOKEN }}" \
+          -H "Content-Type: application/x-www-form-urlencoded" \
+          --data "presence=auto"
+          
